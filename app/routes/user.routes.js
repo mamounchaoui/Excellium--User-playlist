@@ -11,6 +11,12 @@ module.exports = app => {
 
     router.get("/AllUsers", userController.getAllUsers);
 
+
+    router.post("/addAds/:id", userController.addAdsByUser);
+    router.put("/updateAds/:id", userController.updateAds);
+    router.delete("/deleteAds/:id", userController.deleteAds);
+    router.get("/myAds/:id", userController.getAllAdsByUser);
+
     app.use("/api/v1/Users", router);
   };
   

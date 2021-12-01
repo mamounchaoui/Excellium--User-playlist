@@ -16,7 +16,8 @@ module.exports = mongoose => {
             address: String
         },
         role: {type: String , required: [true, 'Role required']},
-        playlists : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Playlist' }]
+        playlists : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Playlist' }],
+        adverts : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Advert' }]
       },
       { timestamps: true }
     );
