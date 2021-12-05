@@ -8,7 +8,12 @@ module.exports = mongoose => {
         clicks: Number,
         impression: String,
         period: Number,
-        link: String
+        link: String,
+        image: {
+          content : ArrayBuffer,
+          filename : String,
+          type: String,
+        }
       },
       { timestamps: true }
     );

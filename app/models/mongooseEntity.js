@@ -12,12 +12,12 @@ exports.save = (req,res,schemaModel) => {
       model
       .save()
       .then(data => {
-        res.send(data);
+        res.send({status: 'Succes' , data: data});
       })
       .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the Model."
+        res.status(500).send({ 
+          status: 'Error',
+          message:err.message || "Some error occurred while creating the Model."
         });
       });
 }
@@ -25,10 +25,11 @@ exports.save = (req,res,schemaModel) => {
 exports.findBy = (req,res,schemaModel,jsonObject) => {
     schemaModel.find(jsonObject)
     .then(data => {
-      res.send(data);
+      res.send({status: 'Succes' , data: data});
     })
     .catch(err => {
       res.status(500).send({
+        status: 'Error',
         message:
           err.message || "Some error occurred while retrieving Models."
       });
@@ -41,13 +42,13 @@ exports.findBy = (req,res,schemaModel,jsonObject) => {
     schemaModel.findById(id)
       .then(data => {
         if (!data)
-          res.status(404).send({ message: "Not found Model with id " + id });
-        else res.send(data);
+          res.status(404).send({ status: 'Error',message: "Not found Model with id " + id });
+        else res.send({status: 'Succes' , data: data});
       })
       .catch(err => {
         res
           .status(500)
-          .send({ message: "Error retrieving Model with id=" + id });
+          .send({  status: 'Error',message: "Error retrieving Model with id=" + id });
       });
   };
 
@@ -57,13 +58,13 @@ exports.findBy = (req,res,schemaModel,jsonObject) => {
     schemaModel.findById(id).select(query)
       .then(data => {
         if (!data)
-          res.status(404).send({ message: "Not found Model with id " + id });
-        else res.send(data);
+          res.status(404).send({ status: 'Error', message: "Not found Model with id " + id });
+        else res.send({status: 'Success' , data: data});
       })
       .catch(err => {
         res
           .status(500)
-          .send({ message: "Error retrieving Model with id=" + id });
+          .send({  status: 'Error',message: "Error retrieving Model with id=" + id });
       });
   };
 
@@ -74,12 +75,14 @@ exports.findBy = (req,res,schemaModel,jsonObject) => {
       .then(data => {
         if (!data) {
           res.status(404).send({
+            status: 'Error',
             message: `Cannot update Model with id=${id}. Maybe Model was not found!`
           });
-        } else res.send({ message: "Model was updated successfully." });
+        } else res.send({ status: 'Success' ,message: "Model was updated successfully.", data: data });
       })
       .catch(err => {
         res.status(500).send({
+          status: 'Error',
           message: "Error updating Model with id=" + id
         });
       });
@@ -90,12 +93,14 @@ exports.findBy = (req,res,schemaModel,jsonObject) => {
       .then(data => {
         if (!data) {
           res.status(404).send({
+            status: 'Error',
             message: `Cannot update Model with id=${id}. Maybe Model was not found!`
           });
-        } else res.send({ message: "Model was updated successfully."});
+        } else res.send({ status: 'Success',message: "Model was updated successfully."});
       })
       .catch(err => {
         res.status(500).send({
+          status: 'Error',
           message: "Error updating Model with id=" + id
         });
       });
@@ -107,16 +112,19 @@ exports.findBy = (req,res,schemaModel,jsonObject) => {
       .then(data => {
         if (!data) {
           res.status(404).send({
+            status: 'Error',
             message: `Cannot delete Model with id=${id}. Maybe Model was not found!`
           });
         } else {
           res.send({
+            status: 'Success',
             message: "Model was deleted successfully!"
           });
         }
       })
       .catch(err => {
         res.status(500).send({
+          status: 'Error',
           message: "Could not delete Model with id=" + id
         });
       });
@@ -131,8 +139,8 @@ exports.findBy = (req,res,schemaModel,jsonObject) => {
       if (err){
         res
         .status(500)
-        .send({ message: err.message });
+        .send({ status: 'Error',message: err.message });
       }
-      res.send(data);
+      res.send({status: 'Succes' , data: data});
     });
   };
