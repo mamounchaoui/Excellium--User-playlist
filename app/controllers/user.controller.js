@@ -35,6 +35,14 @@ exports.getAllUsers = async (req, res) => {
   mongooseEntity.findBy(req,res,UserModel,{});
 };
 
+exports.getUser = async (req, res) => {
+  mongooseEntity.findById(req,res,UserModel);
+};
+
+exports.updateUser = async (req, res) => {
+  mongooseEntity.findByIdAndUpdate(req,res,UserModel,req.body)
+};
+
 
 
 /**Ads */

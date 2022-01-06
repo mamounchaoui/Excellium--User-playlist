@@ -3,7 +3,8 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    
+    router.put("/updateUser/:id", userController.updateUser);
+    router.get("/getUser/:id", userController.getUser);
     router.get("/", userController.getAllUsers);
 
 

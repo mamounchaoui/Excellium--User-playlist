@@ -9,11 +9,10 @@ module.exports = mongoose => {
         impression: String,
         period: Number,
         link: String,
-        image: {
-          content : ArrayBuffer,
-          filename : String,
-          type: String,
-        }
+        image: String,
+        audience: String,
+        daily_budget: Number,
+        coverage:Number
       },
       { timestamps: true }
     );
