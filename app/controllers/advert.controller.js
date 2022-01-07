@@ -43,3 +43,7 @@ exports.getAllAdverts = (req,res) => {
 exports.getAdvert = (req,res) => {
     mongooseEntity.findById(req,res,AdvertModel);
 };
+
+exports.addClickByAdvertId = (req,res) => {
+    mongooseEntity.findByIdAndUpdate(req,res,AdvertModel, {$push : {clicks: req.body}});
+};

@@ -5,7 +5,11 @@ module.exports = mongoose => {
         description: String,
         location: String,
         cost:  Number,
-        clicks: Number,
+        clicks: [
+          {
+            date: Date
+          }
+        ],
         impression: String,
         period: Number,
         link: String,

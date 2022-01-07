@@ -10,6 +10,8 @@ module.exports = app => {
 
     router.get("/", advertController.getAllAdverts);
     router.get("/advert/:id", advertController.getAdvert);
+    
+    router.post("/click/:id",advertController.addClickByAdvertId);
  
     app.use("/api/v1/Ads", router);
   };
