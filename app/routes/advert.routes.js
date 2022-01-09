@@ -12,7 +12,7 @@ module.exports = app => {
     router.get("/advert/:id", advertController.getAdvert);
     
     router.post("/click/:id",advertController.addClickByAdvertId);
- 
+    router.post("/impression/:id",advertController.addImpressionByAdvertId);
     app.use("/api/v1/Ads", router);
   };
   

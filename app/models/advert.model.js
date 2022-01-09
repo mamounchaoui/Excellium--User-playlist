@@ -10,7 +10,11 @@ module.exports = mongoose => {
             date: Date
           }
         ],
-        impression: String,
+        impressions: [
+          {
+            date: Date
+          }
+        ],
         period: Number,
         link: String,
         image: String,
